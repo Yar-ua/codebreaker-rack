@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%# <!DOCTYPE html>
 <html lang="en" class="mdl-js">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +9,7 @@
     <script src="/assets/js/bootstrap.min.js"></script>
 
     <%# <script src="/assets/js/app.js"></script> %>
-    <title>Codebreaker Web</title>
+    <%# <title>Codebreaker Web</title>
   <body>
     <section id="introduction">
       <div class="container">
@@ -21,10 +21,10 @@
               </div>
             </div>
 
-            <%# <%= yield %> %>
+            <%= yield %> %> %>
 
 
-            <p class="lead text-white-70">
+            <%# <p class="lead text-white-70">
               Hello, test!
               Try to guess 4-digit number, that consists of numbers in a range from 1 to 6.
             </p>
@@ -68,7 +68,7 @@
               </div>
               <hr class="mb-4">
 
-              <button type="submit" class="btn btn-primary btn-lg" action="http://localhost:9292/show_hint">
+              <button type="submit" class="btn btn-primary btn-lg">
                 Submit
               </button>
               <a class="btn btn-warning btn-lg float-right" role="button">
@@ -80,13 +80,13 @@
                   3
                 </span>
               </a>
-            </form>
+            </form> %>
 
-
+<%# 
 
           </div>
         </div>
        </div>
     </section>
   </body>
-</html>
+</html> %>

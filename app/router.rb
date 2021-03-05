@@ -21,6 +21,7 @@ class Router
     when URLS[:game]          then @controller.game
     when URLS[:win]           then @controller.win
     when URLS[:lose]          then @controller.lose
+    if URLS[]
 
     else 
       @controller.not_found

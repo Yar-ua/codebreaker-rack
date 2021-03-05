@@ -1,8 +1,4 @@
-class AppController
-  def initialize(request)
-    @request = request
-    @response = Rack::Response.new    
-  end
+class AppController < BaseController
 
   def menu
     show_page(:menu)
@@ -15,10 +11,5 @@ class AppController
   def statistics
     show_page (:statistics)
   end
-
-  def show_page(template)
-    path = File.expand_path("../../views/#{template}.html.erb", __FILE__)
-    ERB.new(File.read(path)).result(binding)
-  end
-
+  
 end

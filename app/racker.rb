@@ -10,25 +10,9 @@ module Middlewares
     end
 
     def response
-      Rack::Response.new(@router.route)
+      # Rack::Response.new(@router.route)
+      @router.route
     end
-
-    # def response
-    #   case @request.path
-    #   when '/' then Rack::Response.new(render('menu.html.erb'))
-    #   when '/rules' then Rack::Response.new(render('rules.html.erb'))
-    #   when '/stats' then Rack::Response.new(render('statistics.html.erb'))
-    #   when '/game' then Rack::Response.new(render('game.html.erb'))
-    #   when '/win' then Rack::Response.new(render('win.html.erb'))
-    #   when '/lose' then Rack::Response.new(render('lose.html.erb'))
-    #   else Rack::Response.new('Not Found', 404)
-    #   end
-    # end
-
-    # def render(template)
-    #   path = File.expand_path("../views/#{template}", __FILE__)
-    #   ERB.new(File.read(path)).result(binding)
-    # end
 
   end
 end

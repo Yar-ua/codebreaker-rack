@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "bootstrap": "4.6.0",
-    "jquery": "^3.5.1",
-    "popper": "^1.0.1"
-  }
-}

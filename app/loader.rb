@@ -1,5 +1,7 @@
+require 'bundler/setup'
 require 'pry'
 require 'delegate'
+require 'rack'
 require 'codebreaker'
 require 'erb'
 

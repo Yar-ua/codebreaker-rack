@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/Yar-ua/codebreaker21rg
-  revision: 59be118920d71ffed442e44cb9a2b31291e1b5cd
+  revision: 060d995819947d7648012f4036be729621613c9a
   branch: dev
   specs:
-    codebreaker21rg (0.1.1)
+    codebreaker21rg (0.1.2)
       pry
       rake
 
@@ -22,12 +22,16 @@ GEM
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     method_source (1.0.0)
+    nio4r (2.5.7)
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
     pry (0.14.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    puma (5.2.2)
+      nio4r (~> 2.0)
+    rack (2.2.3)
     rainbow (3.0.0)
     rake (13.0.3)
     regexp_parser (2.1.1)
@@ -79,6 +83,8 @@ DEPENDENCIES
   fasterer
   i18n
   pry
+  puma
+  rack
   rspec
   rubocop
   rubocop-rspec

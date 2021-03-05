@@ -10,7 +10,6 @@ module Middlewares
     end
 
     def response
-      # Rack::Response.new(@router.route)
       @router.route
     end
 

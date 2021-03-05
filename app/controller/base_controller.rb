@@ -4,6 +4,12 @@ class BaseController
     @response = Rack::Response.new
   end
   
+  def redirect_to(page)
+    url = page == :root ? '/' : "#{page}"
+    @response.redirect(url)
+    @response
+  end
+  
   def show_page(name)
     @response.write(render(name))
     @response

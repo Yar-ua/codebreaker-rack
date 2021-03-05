@@ -26,18 +26,18 @@
               </p>
             </div>
             <hr class="mb-4">
-            <form method="post" action="">
+            <form method="post" action="/game">
               <div class="form-group">
                 <label for="player_name" class="lead label">Player's name:</label>
-                <input class="form-control" name="player_name" id="player_name" pattern="^[\w\u0400-\u04ff]{3,20}$" placeholder="Your name" autofocus="" required="">
+                <input class="form-control" name="user_name" id="user_name" pattern="^[\w\u0400-\u04ff]{3,20}$" placeholder="Your name" autofocus="" required="">
               </div>
               <div class="form-group">
                 <label for="level" class="lead label">Game level:</label>
-                <select class="custom-select" name="level" required="">
+                <select class="custom-select" name="difficulty" required="">
                   <option value="">Choose game level...</option>
-                  <option value="simple">Simple</option>
-                  <option value="middle">Middle</option>
-                  <option value="hard">Hard</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hell">Hell</option>
                 </select>
               </div>
 

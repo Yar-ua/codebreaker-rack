@@ -7,8 +7,6 @@
     <link href="/assets/css/styles.css" rel="stylesheet">
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
-
-    <%# <script src="/assets/js/app.js"></script> %>
     <title>Codebreaker Web</title>
   <body>
     <section id="introduction">
@@ -17,11 +15,11 @@
           <div class="col-12 col-md-6">
             <div class="row">
               <div class="col-md-auto">
-                <h1 class="text-white title">Codebreaker 2018</h1>
+                <h1 class="text-white title">Codebreaker 2021</h1>
               </div>
             </div>
 
-            <%# <%= yield %> %>
+            <%# <%= yield %>
 
 
             <p class="lead text-white-70">
@@ -34,27 +32,31 @@
                 <button type="button" class="btn btn-primary" disabled>
                   Level:
                   <span class="badge badge-light">
-                    Simple
+                  <%= @web_game.game.difficulty.type %>
                   </span>
                 </button>
               </div>
               <div class="col text-center button">
                 <button type="button" class="btn btn-primary" disabled>
                   Attempts:
-                  <span class="badge badge-light">4</span>
+                  <span class="badge badge-light">
+                  <%= @web_game.game.attempts %>
+                  </span>
                 </button>
               </div>
 
               <div class="col button">
                 <button type="button" class="btn btn-primary float-right">
                   Hints:
-                  <span class="badge badge-light">1</span>
+                  <span class="badge badge-light">
+                  <%= @web_game.game.hints %>
+                  </span>
                 </button>
               </div>
             </div>
             <hr class="mb-4">
 
-            <form method="post" action="http://localhost:9292/submit_answer">
+            <form method="post" action="/statistic"> <%###### %>
               <div class="form-group">
                 <input class="form-control guess_input" name="number" pattern="^[1-6]{4}$" placeholder="1234" required="" autocomplete="off">
               </div>
@@ -68,10 +70,10 @@
               </div>
               <hr class="mb-4">
 
-              <button type="submit" class="btn btn-primary btn-lg" action="http://localhost:9292/show_hint">
+              <button type="submit" class="btn btn-primary btn-lg" action="/submit_answer">
                 Submit
               </button>
-              <a class="btn btn-warning btn-lg float-right" role="button">
+              <a class="btn btn-warning btn-lg float-right" role="button" href="/hint">
                 Show hint!
                 <span class="badge badge-light">
                   6
@@ -81,9 +83,7 @@
                 </span>
               </a>
             </form>
-
-
-
+<h1><%= @web_game.inspect %><%= @web_game.game.inspect %></h1>
           </div>
         </div>
        </div>

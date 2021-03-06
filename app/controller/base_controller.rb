@@ -1,6 +1,7 @@
 class BaseController
-  def initialize(request)
+  def initialize(request, session)
     @request = request
+    @session = session
     @response = Rack::Response.new
   end
   
@@ -18,6 +19,11 @@ class BaseController
   def render(template)
     path = File.expand_path("../../views/#{template}.html.erb", __FILE__)
     page = ERB.new(File.read(path)).result(binding)
+  end
+  
+  def not_found
+    @response.write(render('404_not_found'))
+    @response
   end
 
 end

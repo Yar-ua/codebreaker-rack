@@ -5,7 +5,12 @@ require 'rack'
 require 'codebreaker'
 require 'erb'
 
+require_relative './helpers/session_helper'
+
+require_relative './models/web_game'
+
 require_relative './controller/base_controller'
 require_relative './controller/app_controller'
+
 require_relative './router'
 require_relative './racker'

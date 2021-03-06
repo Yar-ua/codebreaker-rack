@@ -1,16 +1,18 @@
 class Router
+  
   URLS = {
     root: '/',
     rules: '/rules',
     statistics: '/stats',
     game: '/game',
     win: '/win',
-    lose: '/lose'
+    lose: '/lose',
+    hint: '/hint'
   }.freeze
 
-  def initialize(request)
+  def initialize(request, session)
     @request = request
-    @controller = AppController.new(request)
+    @controller = AppController.new(request, session)
   end
 
   def route
@@ -21,10 +23,10 @@ class Router
     when URLS[:game]          then @controller.game
     when URLS[:win]           then @controller.win
     when URLS[:lose]          then @controller.lose
-    if URLS[]
-
+    when URLS[:hint]          then @controller.hint
     else 
       @controller.not_found
     end
   end
+  
 end

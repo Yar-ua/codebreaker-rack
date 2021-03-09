@@ -56,34 +56,47 @@
             </div>
             <hr class="mb-4">
 
-            <form method="post" action="/statistic"> <%###### %>
+            <form method="post" action="/submit_answer">
               <div class="form-group">
-                <input class="form-control guess_input" name="number" pattern="^[1-6]{4}$" placeholder="1234" required="" autocomplete="off">
+                <input class="form-control guess_input" name="guess" pattern="^[1-6]{4}$" placeholder="1234" required="" autocomplete="off">
               </div>
               <div class="form-group guess_markers_list">
-                <div id="guess_marker">
+                <% @web_game.answers.map.with_index do |answer, idx| %>
+                  <div id="guess_marker">
+                    <%= @web_game.guesses[idx] %> || 
+                    <% (answer.split("") + Array.new(4 - answer.size)).map do |item| %>
+                      <% if item == Codebreaker::Game::PLUS %>
+                        <button type="button" class="btn btn-success marks" disabled>+</button>
+                      <% elsif item == Codebreaker::Game::MINUS %>
+                        <button type="button" class="btn btn-primary marks" disabled>-</button>
+                      <% else %>
+                        <button type="button" class="btn btn-danger marks" disabled>x</button>
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <%# <div id="guess_marker">
                   <button type="button" class="btn btn-success marks" disabled>+</button>
                   <button type="button" class="btn btn-primary marks" disabled>-</button>
                   <button type="button" class="btn btn-danger marks" disabled>x</button>
                   <button type="button" class="btn btn-danger marks" disabled>x</button>
-                </div>
+                </div> %>
               </div>
               <hr class="mb-4">
 
-              <button type="submit" class="btn btn-primary btn-lg" action="/submit_answer">
+              <button type="submit" class="btn btn-primary btn-lg">
                 Submit
               </button>
               <a class="btn btn-warning btn-lg float-right" role="button" href="/hint">
                 Show hint!
-                <span class="badge badge-light">
-                  6
-                </span>
-                <span class="badge badge-light">
-                  3
-                </span>
+                <% @web_game.hints.each do |hint| %>
+                  <span class="badge badge-light">
+                    <%= hint %>
+                  </span>
+                <% end %>
               </a>
             </form>
-<h1><%= @web_game.inspect %><%= @web_game.game.inspect %></h1>
+<h1><%= @web_game.answers %></h1>
           </div>
         </div>
        </div>

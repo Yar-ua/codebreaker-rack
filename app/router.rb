@@ -4,7 +4,9 @@ class Router
     root: '/',
     rules: '/rules',
     statistics: '/stats',
+    new_game: '/new_game',
     game: '/game',
+    submit_answer: '/submit_answer',
     win: '/win',
     lose: '/lose',
     hint: '/hint'
@@ -20,7 +22,9 @@ class Router
     when URLS[:root]          then @controller.menu
     when URLS[:rules]         then @controller.rules
     when URLS[:statistics]    then @controller.statistics
+    when URLS[:new_game]      then @controller.new_game
     when URLS[:game]          then @controller.game
+    when URLS[:submit_answer] then @controller.submit_answer
     when URLS[:win]           then @controller.win
     when URLS[:lose]          then @controller.lose
     when URLS[:hint]          then @controller.hint

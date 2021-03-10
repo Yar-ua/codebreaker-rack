@@ -24,6 +24,16 @@ class AppController < BaseController
     new_game
   end
   
+  def win
+    @session.destroy
+    show_page(:win)
+  end
+  
+  def lose
+    @session.destroy
+    show_page(:lose)
+  end
+  
   def new_game
     @web_game = WebGame.new
     init_user
@@ -45,15 +55,17 @@ class AppController < BaseController
     show_page(:game)
   end
   
-  def win
-    show_page(:win)
-  end
-  
-  def lose
-    show_page(:lose)
-  end
-  
   private
+  
+  def win_game
+    save_result
+    redirect_to(:win)
+  end
+    
+  def save_result
+    @stats = Stats.new(@web_game.game.user, @web_game.result)
+    Database.save(@stats)
+  end
   
   def init_user
     @web_game.game.user_set(@request[:user_name])
@@ -64,8 +76,8 @@ class AppController < BaseController
   end
   
   def check_win_or_lose
-    return redirect_to(:win) if @web_game.win == true
-    return redirect_to(:lose) if @web_game.lose == true
+    win if @web_game.status == Codebreaker::Game::WIN
+    return redirect_to(:lose) if @web_game.status == Codebreaker::Game::LOSE
   end
   
   def have_params?

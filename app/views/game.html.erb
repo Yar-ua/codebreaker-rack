@@ -23,7 +23,7 @@
 
 
             <p class="lead text-white-70">
-              Hello, test!
+              Hello, <%= @web_game.game.user.name %>!
               Try to guess 4-digit number, that consists of numbers in a range from 1 to 6.
             </p>
             <hr class="mb-4">
@@ -75,12 +75,6 @@
                     <% end %>
                   </div>
                 <% end %>
-                <%# <div id="guess_marker">
-                  <button type="button" class="btn btn-success marks" disabled>+</button>
-                  <button type="button" class="btn btn-primary marks" disabled>-</button>
-                  <button type="button" class="btn btn-danger marks" disabled>x</button>
-                  <button type="button" class="btn btn-danger marks" disabled>x</button>
-                </div> %>
               </div>
               <hr class="mb-4">
 
@@ -96,7 +90,7 @@
                 <% end %>
               </a>
             </form>
-<h1><%= @web_game.answers %></h1>
+<h1><%= @web_game.answers %></h1><h1><%= @web_game.game.code %></h1>
           </div>
         </div>
        </div>

@@ -14,6 +14,7 @@ class AppController < BaseController
   end
 
   def statistics
+    @sorted_stats = Database.sort_stats
     show_page(:statistics)
   end
   
@@ -39,7 +40,7 @@ class AppController < BaseController
     init_user
     init_game
     @session.save(web_game: @web_game)
-    show_page(:game)
+    redirect_to(:game)
   end
   
   def hint
@@ -52,7 +53,7 @@ class AppController < BaseController
     @web_game.run(guess_params)
     @session.save(web_game: @web_game)
     check_win_or_lose
-    show_page(:game)
+    game
   end
   
   private
@@ -63,8 +64,8 @@ class AppController < BaseController
   end
     
   def save_result
-    @stats = Stats.new(@web_game.game.user, @web_game.result)
-    Database.save(@stats)
+    stats = Stats.new(@web_game.game.user, @web_game.result)
+    Database.save(stats)
   end
   
   def init_user
@@ -76,7 +77,7 @@ class AppController < BaseController
   end
   
   def check_win_or_lose
-    win if @web_game.status == Codebreaker::Game::WIN
+    win_game if @web_game.status == Codebreaker::Game::WIN
     return redirect_to(:lose) if @web_game.status == Codebreaker::Game::LOSE
   end
   

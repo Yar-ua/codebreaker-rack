@@ -9,4 +9,4 @@ use Rack::Session::Cookie, key: 'rack.session',
                            secret: 'change_me',
                            old_secret: 'also_change_me'
 
-run Middlewares::Racker
+run CodebreakerRack

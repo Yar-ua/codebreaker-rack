@@ -19,10 +19,7 @@ class AppController < BaseController
   end
   
   def game
-    return show_page(:game) if @session.present?
-    return redirect_to(:root) unless have_params?
-
-    new_game
+    show_page(:game)
   end
   
   def win
@@ -36,8 +33,9 @@ class AppController < BaseController
   end
   
   def new_game
+    return redirect_to(:root) unless have_params?
+    
     @web_game = WebGame.new
-    init_user
     init_game
     @session.save(web_game: @web_game)
     redirect_to(:game)
@@ -68,11 +66,8 @@ class AppController < BaseController
     Database.save(stats)
   end
   
-  def init_user
-    @web_game.game.user_set(@request[:user_name])
-  end
-  
   def init_game
+    @web_game.game.user_set(@request[:user_name])
     @web_game.game.difficulty_set(@request[:difficulty])
   end
   

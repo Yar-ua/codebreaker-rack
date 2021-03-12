@@ -4,8 +4,8 @@ class AppController < BaseController
     super(request, session)
     @web_game = session.load if session.present?
   end
-
-  def menu
+  
+  def root
     show_page(:menu)
   end
 
@@ -16,6 +16,28 @@ class AppController < BaseController
   def statistics
     @sorted_stats = Database.sort_stats
     show_page(:statistics)
+  end
+  
+  def new_game
+    return redirect_to(:root) unless have_params?
+    
+    @web_game = WebGame.new
+    init_game
+    @session.save(web_game: @web_game)
+    redirect_to(:game)
+  end
+  
+  def submit_answer
+    @web_game.run(guess_params)
+    @session.save(web_game: @web_game)
+    check_win_or_lose
+    game
+  end
+  
+  def hint
+    @web_game.get_hint
+    @session.save(web_game: @web_game)
+    show_page(:game)
   end
   
   def game
@@ -31,29 +53,7 @@ class AppController < BaseController
     @session.destroy
     show_page(:lose)
   end
-  
-  def new_game
-    return redirect_to(:root) unless have_params?
     
-    @web_game = WebGame.new
-    init_game
-    @session.save(web_game: @web_game)
-    redirect_to(:game)
-  end
-  
-  def hint
-    @web_game.get_hint
-    @session.save(web_game: @web_game)
-    show_page(:game)
-  end
-  
-  def submit_answer
-    @web_game.run(guess_params)
-    @session.save(web_game: @web_game)
-    check_win_or_lose
-    game
-  end
-  
   private
   
   def win_game

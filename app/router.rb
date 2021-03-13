@@ -24,5 +24,3 @@ class Router
   end
   
 end
-
-# TODO: do smthn with interface controller, cause right now it is not imleented

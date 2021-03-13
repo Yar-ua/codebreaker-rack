@@ -12,18 +12,29 @@ class BaseController
   end
   
   def show_page(name)
-    @response.write(render(name))
+    html_body = render(name)
+    set_response(html_body)
+  end
+  
+  def not_found
+    html_body = render('404_not_found')
+    set_response(html_body, 404)
+  end
+  
+  private
+  
+  def set_response(body, status = 200)
+    @response.write(body)
+    @response.status = status
     @response
   end
   
   def render(template)
-    path = File.expand_path("../../views/#{template}.html.erb", __FILE__)
-    page = ERB.new(File.read(path)).result(binding)
+    render_template('layout/layout') { render_template(template) }
   end
   
-  def not_found
-    @response.write(render('404_not_found'))
-    @response
+  def render_template(template, &block)
+    template = File.expand_path("../../views/#{template}.html.erb", __FILE__)
+    ERB.new(File.read(template)).result(binding &block)
   end
-
 end

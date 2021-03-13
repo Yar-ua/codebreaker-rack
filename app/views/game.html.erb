@@ -38,17 +38,19 @@ Try to guess 4-digit number, that consists of numbers in a range from 1 to 6.
 </div>
 <div class="form-group guess_markers_list">
   <% @web_game.answers.map.with_index do |answer, idx| %>
-    <div id="guess_marker">
-      <%= @web_game.guesses[idx] %> || 
-      <% (answer.split("") + Array.new(4 - answer.size)).map do |item| %>
-        <% if item == Codebreaker::Game::PLUS %>
-          <button type="button" class="btn btn-success marks" disabled>+</button>
-        <% elsif item == Codebreaker::Game::MINUS %>
-          <button type="button" class="btn btn-primary marks" disabled>-</button>
-        <% else %>
-          <button type="button" class="btn btn-danger marks" disabled>x</button>
+    <div class="guess_marker">
+      <h3 class="text-white-70">
+        <%= @web_game.guesses[idx] %> ==> 
+        <% (answer.split("") + Array.new(4 - answer.size)).map do |item| %>
+          <% if item == Codebreaker::Game::PLUS %>
+            <button type="button" class="btn btn-success marks" disabled>+</button>
+          <% elsif item == Codebreaker::Game::MINUS %>
+            <button type="button" class="btn btn-primary marks" disabled>-</button>
+          <% else %>
+            <button type="button" class="btn btn-danger marks" disabled>x</button>
+          <% end %>
         <% end %>
-      <% end %>
+      </h3>
     </div>
   <% end %>
 </div>

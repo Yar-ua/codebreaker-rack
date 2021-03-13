@@ -1,0 +1,47 @@
+%p.lead.text-white-70
+  Hello, #{@web_game.game.user.name}!
+  Try to guess 4-digit number, that consists of numbers in a range from 1 to 6.
+%hr.mb-4/
+.row
+  .col.button
+    %button.btn.btn-primary{:disabled => "disabled", :type => "button"}
+      Level:
+      %span.badge.badge-light
+        = @web_game.game.difficulty.type
+  .col.text-center.button
+    %button.btn.btn-primary{:disabled => "disabled", :type => "button"}
+      Attempts:
+      %span.badge.badge-light
+        = @web_game.game.attempts
+  .col.button
+    %button.btn.btn-primary.float-right{:disabled => "disabled", :type => "button"}
+      Hints:
+      %span.badge.badge-light
+        = @web_game.game.hints
+%hr.mb-4/
+%form{:action => "/submit_answer", :method => "post"}
+  .form-group
+    %input.form-control.guess_input{:autocomplete => "off", :name => "guess", :pattern => "^[1-6]{4}$", :placeholder => "1234", :required => ""}/
+  .form-group.guess_markers_list
+    - @web_game.answers.map.with_index do |answer, idx|
+      .guess_marker
+        %h3.text-white-70
+          = @web_game.guesses[idx]
+          \==&gt;
+          - (answer.split("") + Array.new(4 - answer.size)).map do |item|
+            - if item == Codebreaker::Game::PLUS
+              %button.btn.btn-success.marks{:disabled => "disabled", :type => "button"} +
+            - elsif item == Codebreaker::Game::MINUS
+              %button.btn.btn-primary.marks{:disabled => "disabled", :type => "button"} -
+            - else
+              %button.btn.btn-danger.marks{:disabled => "disabled", :type => "button"} x
+  %hr.mb-4/
+  %button.btn.btn-primary.btn-lg{:type => "submit"}
+    Submit
+  %a{:class => "btn btn-warning btn-lg float-right #{'disabled' if @web_game.game.hints == 0}", :href => "/hint", :role => "button"}
+    Show hint!
+    - @web_game.hints.each do |hint|
+      %span.badge.badge-light
+        = hint
+%h1= @web_game.answers
+%h1= @web_game.game.code

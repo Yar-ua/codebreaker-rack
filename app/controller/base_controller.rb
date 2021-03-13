@@ -34,7 +34,9 @@ class BaseController
   end
   
   def render_template(template, &block)
-    template = File.expand_path("../../views/#{template}.html.erb", __FILE__)
-    ERB.new(File.read(template)).result(binding &block)
+    # template = File.expand_path("../../views/#{template}.html.erb", __FILE__)
+    # ERB.new(File.read(template)).result(binding &block)
+    template = File.expand_path("../../views/#{template}.html.haml", __FILE__)
+    Haml::Engine.new(File.read(template)).render(binding &block)
   end
 end

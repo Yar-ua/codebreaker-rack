@@ -25,4 +25,8 @@ class Stats
   def hints_used
     @result[:hints_used]
   end
+  
+  def datetime
+    Time.at(@result[:datetime])
+  end
 end

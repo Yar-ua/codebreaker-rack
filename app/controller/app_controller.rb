@@ -1,5 +1,5 @@
 class AppController < BaseController
-  
+
   def initialize(request, session)
     super(request, session)
     @web_game = session.load if session.present?

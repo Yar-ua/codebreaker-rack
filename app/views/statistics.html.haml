@@ -1,15 +1,15 @@
-%p.lead.text-white-70 Top of Players:
+%p.lead.text-white-70= I18n.t(:top_players)
 %hr.mb-4/
 .table-responsive-md.scores
   %table.table.table-striped.table.table-sm
     %thead
       %tr
-        %th{:scope => "col"} #
-        %th{:scope => "col"} Name
-        %th{:scope => "col"} Level
-        %th{:scope => "col"} Attempts Left
-        %th{:scope => "col"} Hints Left
-        %th{:scope => "col"} Date
+        %th{:scope => "col"}= I18n.t(:num)
+        %th{:scope => "col"}= I18n.t(:username)
+        %th{:scope => "col"}= I18n.t(:level)
+        %th{:scope => "col"}= I18n.t(:attempts_left)
+        %th{:scope => "col"}= I18n.t(:hints_left)
+        %th{:scope => "col"}= I18n.t(:date)
     %tbody
       - @sorted_stats.map.with_index do |stats, index|
         %tr
@@ -25,4 +25,4 @@
           %td= stats.datetime
 %hr.mb-4/
 %a.btn.btn-primary.btn-lg{:href => "/", :role => "button"}
-  Home
+  = I18n.t(:home)

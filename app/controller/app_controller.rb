@@ -28,16 +28,15 @@ class AppController < BaseController
   end
   
   def submit_answer
-    @web_game.run(guess_params)
+    @web_game.run(@request[:guess])
     @session.save(web_game: @web_game)
     check_win_or_lose
-    game
   end
   
   def hint
     @web_game.get_hint
     @session.save(web_game: @web_game)
-    show_page(:game)
+    redirect_to(:game)
   end
   
   def game
@@ -72,16 +71,16 @@ class AppController < BaseController
   end
   
   def check_win_or_lose
-    win_game if @web_game.status == Codebreaker::Game::WIN
-    return redirect_to(:lose) if @web_game.status == Codebreaker::Game::LOSE
+    case @web_game.status
+    when Codebreaker::Game::WIN then win_game
+    when Codebreaker::Game::LOSE then redirect_to(:lose)
+    else
+      redirect_to(:game)
+    end
   end
   
   def have_params?
     (!@request[:user_name].empty? && !@request[:difficulty].empty?)
-  end
-  
-  def guess_params
-    @request[:guess]
   end
   
 end

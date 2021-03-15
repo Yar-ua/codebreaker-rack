@@ -12,17 +12,21 @@ class BaseController
   end
 
   def show_page(name)
-    @response.write(render(name))
+    prepeare_response(name)
     @response
   end
 
   def not_found
-    @response.write(render('404_not_found'))
-    @response.status = 404
+    prepeare_response('404_not_found', 404)
     @response
   end
 
   private
+  
+  def prepeare_response(view, code = 200)
+    @response.write(render(view))
+    @response.status = code
+  end
   
   def render(view)
     render_template('layouts/layout') { render_template(view) }

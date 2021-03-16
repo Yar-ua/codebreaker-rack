@@ -35,6 +35,8 @@ GEM
     puma (5.2.2)
       nio4r (~> 2.0)
     rack (2.2.3)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rainbow (3.0.0)
     rake (13.0.3)
     regexp_parser (2.1.1)
@@ -91,6 +93,7 @@ DEPENDENCIES
   pry
   puma
   rack
+  rack-test
   rspec
   rubocop
   rubocop-rspec

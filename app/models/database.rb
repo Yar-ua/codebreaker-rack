@@ -1,5 +1,5 @@
 class Database
-  PATH = './db/top_users.yml'.freeze
+  PATH = './db/top_users.yml'
   DIFFICULTY_ORDER = %w[hell medium easy].freeze
 
   class << self
@@ -23,7 +23,5 @@ class Database
       sorted_stats.sort_by! { |item| DIFFICULTY_ORDER.index item.difficulty }
       sorted_stats
     end
-
   end
-  
 end

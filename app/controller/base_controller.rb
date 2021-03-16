@@ -6,7 +6,7 @@ class BaseController
   end
 
   def redirect_to(page)
-    url = page == :root ? '/' : "#{page}"
+    url = page == :root ? '/' : page.to_s
     @response.redirect(url)
     @response
   end
@@ -22,18 +22,18 @@ class BaseController
   end
 
   private
-  
+
   def prepeare_response(view, code = 200)
     @response.write(render(view))
     @response.status = code
   end
-  
+
   def render(view)
     render_template('layouts/layout') { render_template(view) }
   end
 
   def render_template(template, &block)
     template = File.expand_path("../../views/#{template}.html.haml", __FILE__)
-    Haml::Engine.new(File.read(template)).render(binding &block)
+    Haml::Engine.new(File.read(template)).render(binding(&block))
   end
 end

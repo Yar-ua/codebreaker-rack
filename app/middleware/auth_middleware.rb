@@ -1,9 +1,8 @@
 module Middleware
   class AuthMiddleware
     AUTH_URL = ['/game', '/submit_answer', '/hint', '/win', '/lose'].freeze
-    FREE_URL = ['/', '/rules', '/stats', '/new_game'].freeze
-    
-    private_constant :AUTH_URL, :FREE_URL
+
+    private_constant :AUTH_URL
 
     attr_reader :status
 
@@ -27,10 +26,6 @@ module Middleware
 
     def auth_location?
       AUTH_URL.include?(@request.get_header('PATH_INFO'))
-    end
-
-    def free_location?
-      FREE_URL.include?(@request.get_header('PATH_INFO'))
     end
   end
 end

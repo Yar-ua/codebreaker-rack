@@ -11,5 +11,4 @@ class CodebreakerRack
   def response
     @router.route
   end
-
 end

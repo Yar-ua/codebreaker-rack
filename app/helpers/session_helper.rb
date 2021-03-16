@@ -8,8 +8,7 @@ class SessionHelper
   end
 
   def load
-    web_game = @request.session[:web_game]
-    web_game
+    @request.session[:web_game]
   end
 
   def destroy
@@ -20,4 +19,3 @@ class SessionHelper
     @request.session.key?(:web_game)
   end
 end
-

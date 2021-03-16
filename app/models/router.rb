@@ -1,5 +1,4 @@
 class Router
-  
   URLS = {
     root: '/',
     rules: '/rules',
@@ -19,8 +18,7 @@ class Router
 
   def route
     return @controller.not_found unless URLS.key(@request.path)
-    
+
     @controller.method(URLS.key(@request.path)).call
   end
-  
 end

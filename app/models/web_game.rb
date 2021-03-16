@@ -9,7 +9,7 @@ class WebGame
     @status = :in_process
   end
 
-  def get_hint
+  def hint
     hint = @game.hint[:message]
     @hints << hint unless hint == Codebreaker::Game::NO_HINT
   end

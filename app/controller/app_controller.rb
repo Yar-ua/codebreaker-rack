@@ -18,7 +18,7 @@ class AppController < BaseController
   end
 
   def new_game
-    return redirect_to(:root) unless have_params?
+    return redirect_to(:root) unless params?
 
     @web_game = WebGame.new
     init_game
@@ -33,7 +33,7 @@ class AppController < BaseController
   end
 
   def hint
-    @web_game.get_hint
+    @web_game.hint
     @session.save(web_game: @web_game)
     redirect_to(:game)
   end
@@ -78,7 +78,7 @@ class AppController < BaseController
     end
   end
 
-  def have_params?
+  def params?
     (!@request[:user_name].empty? && !@request[:difficulty].empty?)
   end
 end

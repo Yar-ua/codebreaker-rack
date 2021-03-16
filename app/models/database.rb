@@ -1,5 +1,5 @@
 class Database
-  PATH = './db/top_users.yml'
+  PATH = './db/top_users.yml'.freeze
   DIFFICULTY_ORDER = %w[hell medium easy].freeze
 
   class << self

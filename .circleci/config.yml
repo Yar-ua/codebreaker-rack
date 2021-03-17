@@ -1,69 +1,30 @@
 version: 2.1
-
-executors:
-  default:
-    working_directory: ~/repo
-    description: The official CircleCI Ruby Docker image
+orbs:
+  ruby: circleci/ruby@0.1.2
+jobs:
+  build:
     docker:
       - image: circleci/ruby:2.7.2
-
-caches:
-  - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
-  - &bundle_cache v2-repo-
-
-commands:
-  defaults:
     steps:
       - checkout
       - restore_cache:
           keys:
-            - *bundle_cache_full
-            - *bundle_cache
-      - run: bundle install --path vendor/bundle
-
+            - gem-cache-v1-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-
+      - run:
+          name: Install dependencies
+          command: |
+            gem install bundler -v 2.2.9
+            bundle install
       - save_cache:
-          key: *bundle_cache_full
+          key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
-  run_linters:
-    description: command to start linters
-    steps:
       - run:
-          name: rubocop
-          command: bundle exec rubocop --require rubocop-rspec
-          
+          name: Run rubocop
+          command: bundle exec rubocop --cache false
       - run:
-          name: fasterer
-          command: bundle exec fasterer --exclude 'vendor'
-
-  run_specs:
-    steps:
-      - run:
-          name: run_specs
-          command: bundle exec rspec --format progress spec
-
+          name: Run tests
+          command: bundle exec rspec
       - store_artifacts:
-          path: ~/repo/coverage
-          destination: coverage
-
-jobs:
-  lintering:
-    executor: default
-    steps:
-      - defaults
-      - run_linters
-  run_specs:
-    executor: default
-    steps:
-      - defaults
-      - run_specs
-
-workflows:
-  version: 2.1
-  build:
-    jobs:
-      - lintering
-      - run_specs:
-          requires:
-            - lintering
+          path: coverage

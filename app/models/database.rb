@@ -12,7 +12,10 @@ class Database
     def load
       return [] unless File.exist?(File.expand_path(PATH))
 
-      File.open(File.expand_path(PATH)) { |file| YAML.safe_load(file, [Stats, Symbol], [], true) }
+      data = File.open(File.expand_path(PATH)) { |file| YAML.safe_load(file, [Stats, Symbol], [], true) }
+      return [] if data.nil?
+
+      data
     end
 
     def sort_stats

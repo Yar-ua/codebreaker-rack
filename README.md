@@ -1,9 +1,7 @@
 # codebreaker-rack
 
-## How to setup:
+Application was deployed by address:
 
-1. Install yarn packages for styles and bootstrap with: 
+https://cbreaker-web.herokuapp.com/
 
-$ yarn install
-
-2. ...
+Try to use and win =)

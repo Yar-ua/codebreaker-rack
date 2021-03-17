@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Yar-ua/codebreaker21rg
-  revision: 68e18ba900818fd5490166b5dabaa0bbdb73aee7
+  revision: 8763ed5d7f867fc3d31668f629eac1bec3cca4a7
   branch: dev
   specs:
     codebreaker21rg (0.1.3)

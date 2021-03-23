@@ -82,8 +82,8 @@ describe CodebreakerRack do
       it 'redirect path' do
         expect(last_response.header['Location']).to eq(:win.to_s)
       end
-      
-      it '***' do
+
+      it 'statistics' do
         get urls[:statistics]
         expect(last_response.body).to include user_name
       end

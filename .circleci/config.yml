@@ -15,7 +15,6 @@ commands:
   defaults:
     steps:
       - checkout
-      - run: touch db/top_users.yml
       - restore_cache:
           keys:
             - *bundle_cache_full

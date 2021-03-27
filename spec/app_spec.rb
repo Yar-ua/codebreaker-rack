@@ -90,11 +90,11 @@ RSpec.describe CodebreakerRack do
         follow_redirect!
         expect(last_response.body).to include I18n.t('congratulation', name: user_name)
       end
-    end
-
-    it 'statistics' do
-      get urls[:statistics]
-      expect(last_response.body).to include user_name
+      
+      it 'statistics' do
+        get urls[:statistics]
+        expect(last_response.body).to include user_name
+      end
     end
 
     describe 'lose game' do

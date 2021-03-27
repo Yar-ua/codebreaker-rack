@@ -88,12 +88,12 @@ PLATFORMS
 DEPENDENCIES
   codebreaker21rg!
   fasterer
-  haml
-  i18n
-  pry
-  puma
-  rack
-  rack-test
+  haml (>= 5.2)
+  i18n (>= 1.8)
+  pry (>= 0.14)
+  puma (>= 5.2)
+  rack (>= 2.2)
+  rack-test (>= 1.1)
   rspec
   rubocop
   rubocop-rspec

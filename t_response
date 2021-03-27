@@ -1,0 +1,19 @@
+=> [32m#<Rack::MockResponse:0x0000560847e95020[0m
+ @block[32m=[0m[1;36mnil[0m,
+ @body[32m=[0m[],
+ @buffered[32m=[0m[1;36mtrue[0m,
+ @cookies[32m=[0m
+  {[31m[1;31m"[0m[31mrack.session[1;31m"[0m[31m[0m=>
+    [[31m[1;31m"[0m[31mBAh7B0kiD3Nlc3Npb25faWQGOgZFVG86HVJhY2s6OlNlc3Npb246OlNlc3Npb25JZAY6D0BwdWJsaWNfaWRJIkU3ZTgyMGYyZmM0MjVjMmUxYjUzNTRlMmYxNWM1NDcxM2I0Mjc2Y2U5MTU2MTI2YWY1OWRmNzllNTc2YjczOTFiBjsARkkiDXdlYl9nYW1lBjsARm86DFdlYkdhbWUKOgpAZ2FtZW86FkNvZGVicmVha2VyOjpHYW1lDDoKQGNvZGVJIgk1MzQxBjsARjoRQGhpbnRzX2FycmF5WwlJIgY1BjsARkkiBjMGOwBGSSIGNAY7AEZJIgYxBjsARjoLQGd1ZXNzSSIJMTExMQY7AFQ6CkB1c2VybzoWQ29kZWJyZWFrZXI6OlVzZXIGOgpAbmFtZUkiCkJlbm55BjsAVDoQQGRpZmZpY3VsdHlvOhxDb2RlYnJlYWtlcjo6RGlmZmljdWx0eQY6CkB0eXBlSSIJaGVsbAY7AFQ6DkBhdHRlbXB0c2kJOgtAaGludHNpBjsVWwA6DUBndWVzc2VzWwZAEjoNQGFuc3dlcnNbBkkiBisGOwBUOgxAc3RhdHVzOg9pbl9wcm9jZXNz--098025c6e8667d14cb0aed529868b5a8839b64c4[1;31m"[0m[31m[0m]},
+ @errors[32m=[0m[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+ @headers[32m=[0m
+  {[31m[1;31m"[0m[31mLocation[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mgame[1;31m"[0m[31m[0m,
+   [31m[1;31m"[0m[31mSet-Cookie[1;31m"[0m[31m[0m=>
+    [31m[1;31m"[0m[31mrack.session=BAh7B0kiD3Nlc3Npb25faWQGOgZFVG86HVJhY2s6OlNlc3Npb246OlNlc3Npb25JZAY6D0BwdWJsaWNfaWRJIkU3ZTgyMGYyZmM0MjVjMmUxYjUzNTRlMmYxNWM1NDcxM2I0Mjc2Y2U5MTU2MTI2YWY1OWRmNzllNTc2YjczOTFiBjsARkkiDXdlYl9nYW1lBjsARm86DFdlYkdhbWUKOgpAZ2FtZW86FkNvZGVicmVha2VyOjpHYW1lDDoKQGNvZGVJIgk1MzQxBjsARjoRQGhpbnRzX2FycmF5WwlJIgY1BjsARkkiBjMGOwBGSSIGNAY7AEZJIgYxBjsARjoLQGd1ZXNzSSIJMTExMQY7AFQ6CkB1c2VybzoWQ29kZWJyZWFrZXI6OlVzZXIGOgpAbmFtZUkiCkJlbm55BjsAVDoQQGRpZmZpY3VsdHlvOhxDb2RlYnJlYWtlcjo6RGlmZmljdWx0eQY6CkB0eXBlSSIJaGVsbAY7AFQ6DkBhdHRlbXB0c2kJOgtAaGludHNpBjsVWwA6DUBndWVzc2VzWwZAEjoNQGFuc3dlcnNbBkkiBisGOwBUOgxAc3RhdHVzOg9pbl9wcm9jZXNz--098025c6e8667d14cb0aed529868b5a8839b64c4; path=/; expires=Sun, 25 Apr 2021 21:13:38 GMT; HttpOnly[1;31m"[0m[31m[0m},
+ @length[32m=[0m[1;34m0[0m,
+ @original_headers[32m=[0m
+  {[31m[1;31m"[0m[31mLocation[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mgame[1;31m"[0m[31m[0m,
+   [31m[1;31m"[0m[31mSet-Cookie[1;31m"[0m[31m[0m=>
+    [31m[1;31m"[0m[31mrack.session=BAh7B0kiD3Nlc3Npb25faWQGOgZFVG86HVJhY2s6OlNlc3Npb246OlNlc3Npb25JZAY6D0BwdWJsaWNfaWRJIkU3ZTgyMGYyZmM0MjVjMmUxYjUzNTRlMmYxNWM1NDcxM2I0Mjc2Y2U5MTU2MTI2YWY1OWRmNzllNTc2YjczOTFiBjsARkkiDXdlYl9nYW1lBjsARm86DFdlYkdhbWUKOgpAZ2FtZW86FkNvZGVicmVha2VyOjpHYW1lDDoKQGNvZGVJIgk1MzQxBjsARjoRQGhpbnRzX2FycmF5WwlJIgY1BjsARkkiBjMGOwBGSSIGNAY7AEZJIgYxBjsARjoLQGd1ZXNzSSIJMTExMQY7AFQ6CkB1c2VybzoWQ29kZWJyZWFrZXI6OlVzZXIGOgpAbmFtZUkiCkJlbm55BjsAVDoQQGRpZmZpY3VsdHlvOhxDb2RlYnJlYWtlcjo6RGlmZmljdWx0eQY6CkB0eXBlSSIJaGVsbAY7AFQ6DkBhdHRlbXB0c2kJOgtAaGludHNpBjsVWwA6DUBndWVzc2VzWwZAEjoNQGFuc3dlcnNbBkkiBisGOwBUOgxAc3RhdHVzOg9pbl9wcm9jZXNz--098025c6e8667d14cb0aed529868b5a8839b64c4; path=/; expires=Sun, 25 Apr 2021 21:13:38 GMT; HttpOnly[1;31m"[0m[31m[0m},
+ @status[32m=[0m[1;34m302[0m,
+ @writer[32m=[0m[32m#<Method: Rack::MockResponse(Rack::Response::Helpers)#append(chunk) /home/yar/.rvm/gems/ruby-2.7.2/gems/rack-2.2.3/lib/rack/response.rb:287>[0m[32m>[0m

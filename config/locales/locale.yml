@@ -1,7 +1,7 @@
 en:
   title: "Codebreaker Web"
   name: "Codebreaker 2021"
-  MENU:
+  menu:
     introduction: "Try to guess 4-digit number, that consists of numbers in a range from 1 to 6."
     name: "Player's name:"
     your_name: "Your name"
@@ -12,11 +12,11 @@ en:
     hell: "hell"
     start: "Start the game!"
     rules: "Rules"
-  GAME:
+  game:
     hello: "Hello, %{name}! Try to guess 4-digit number, that consists of numbers in a range from 1 to 6."
     submit: "Submit"
     hint: "Show hint!"
-  LOSE:
+  lose:
     lose: "Oops, %{name}! You lose the game!"
     code_was: "The code was "
   play_again: "Play again!"

@@ -1,4 +1,4 @@
-%p.lead.text-white-70= I18n.t('GAME.hello', name: @web_game.game.user.name)
+%p.lead.text-white-70= I18n.t('game.hello', name: @web_game.game.user.name)
 %hr.mb-4/
 .row
   .col.button
@@ -21,23 +21,20 @@
   .form-group
     %input.form-control.guess_input{:autocomplete => "off", :name => "guess", :pattern => "^[1-6]{4}$", :placeholder => "1234", :required => ""}/
   .form-group.guess_markers_list
-    - @web_game.answers.map.with_index do |answer, idx|
-      .guess_marker
-        %h3.text-white-70
-          = @web_game.guesses[idx]
+    .guess_marker
+      %h3.text-white-70
+        - ViewHelper.show_plus_minus(@web_game).map do |guess|
+          = guess[:guess]
           \==&gt;
-          - (answer.split("") + Array.new(4 - answer.size)).map do |item|
-            - if item == Codebreaker::Game::PLUS
-              %button.btn.btn-success.marks{:disabled => "disabled", :type => "button"} +
-            - elsif item == Codebreaker::Game::MINUS
-              %button.btn.btn-primary.marks{:disabled => "disabled", :type => "button"} -
-            - else
-              %button.btn.btn-danger.marks{:disabled => "disabled", :type => "button"} x
+          - guess[:buttons].map do |item|
+            %button{ class: "btn #{item[:type]} marks", disabled: "disabled", type: "button"}
+              = item[:value]
+          %br
   %hr.mb-4/
   %button.btn.btn-primary.btn-lg{:type => "submit"}
-    = I18n.t('GAME.submit')
+    = I18n.t('game.submit')
   %a{:class => "btn btn-warning btn-lg float-right #{'disabled' if @web_game.game.hints == 0}", :href => "/hint", :role => "button"}
-    = I18n.t('GAME.hint')
+    = I18n.t('game.hint')
     - @web_game.hints.each do |hint|
       %span.badge.badge-light
         = hint

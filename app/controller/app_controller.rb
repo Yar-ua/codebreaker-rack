@@ -43,11 +43,15 @@ class AppController < BaseController
   end
 
   def win
+    return redirect_to(:game) unless @web_game.status == Codebreaker::Game::WIN
+
     @session.destroy
     show_page(:win)
   end
 
   def lose
+    return redirect_to(:game) unless @web_game.status == Codebreaker::Game::LOSE
+
     @session.destroy
     show_page(:lose)
   end

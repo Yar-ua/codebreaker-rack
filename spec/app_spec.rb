@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe CodebreakerRack do
+RSpec.describe CodebreakerRack do
   include Rack::Test::Methods
 
   let(:app) { Rack::Builder.parse_file('config.ru').first }
@@ -11,8 +9,8 @@ describe CodebreakerRack do
       before { get(urls[:root]) }
 
       it { expect(last_response.status).to eq(200) }
-      it { expect(last_response.body).to include I18n.t('MENU.name') }
-      it { expect(last_response.body).to include I18n.t('MENU.choose_level') }
+      it { expect(last_response.body).to include I18n.t('menu.name') }
+      it { expect(last_response.body).to include I18n.t('menu.choose_level') }
     end
 
     describe 'rules page' do
@@ -62,15 +60,22 @@ describe CodebreakerRack do
         get urls[:game]
       end
 
-      it { expect(last_response.body).to include I18n.t('GAME.hello', name: user_name) }
+      it { expect(last_response.body).to include I18n.t('game.hello', name: user_name) }
       it { expect(last_response.body).to include difficulty }
+    end
+
+    describe 'submit_answer' do
+      before { post urls[:submit_answer], guess: '1234' }
+
+      it '111' do
+        follow_redirect!
+        expect(last_response.body).to include NOPE || Codebreaker::Game::PLUS || Codebreaker::Game::MINUS
+      end
     end
 
     describe 'hint' do
       it 'take hint' do
-        hints = last_request.session[:web_game].hints
-        get urls[:hint]
-        expect(last_request.session[:web_game].hints.count - hints.count).to eq(1)
+        expect { get(urls[:hint]) }.to change { last_request.session[:web_game].game.hints }.from(1).to(0)
       end
     end
 
@@ -79,21 +84,17 @@ describe CodebreakerRack do
         get urls[:submit_answer], guess: last_request.session[:web_game].game.code
       end
 
-      it 'redirect path' do
-        expect(last_response.header['Location']).to eq(:win.to_s)
-      end
+      it { expect(last_response.header['Location']).to eq(:win.to_s) }
 
-      it 'statistics' do
-        get urls[:statistics]
-        expect(last_response.body).to include user_name
+      it 'redirect win page' do
+        follow_redirect!
+        expect(last_response.body).to include I18n.t('congratulation', name: user_name)
       end
     end
 
-    describe 'win page delete session' do
-      before { get urls[:win] }
-
-      it { expect(last_response.body).to include I18n.t('congratulation', name: user_name) }
-      it { expect(last_request.session[:web_game]).to eq(nil) }
+    it 'statistics' do
+      get urls[:statistics]
+      expect(last_response.body).to include user_name
     end
 
     describe 'lose game' do
@@ -101,16 +102,20 @@ describe CodebreakerRack do
         5.times { get urls[:submit_answer], guess: '1111' }
       end
 
-      it 'redirect path' do
-        expect(last_response.header['Location']).to eq(:lose.to_s)
+      it { expect(last_response.header['Location']).to eq(:lose.to_s) }
+
+      it 'redirect lose page' do
+        follow_redirect!
+        expect(last_response.body).to include I18n.t('lose.lose', name: user_name)
       end
     end
 
-    describe 'lose page delete session' do
-      before { get urls[:lose] }
+    describe 'win page not available' do
+      it { expect(get(urls[:win])).to be_redirect }
+    end
 
-      it { expect(last_response.body).to include I18n.t('LOSE.lose', name: user_name) }
-      it { expect(last_request.session[:web_game]).to eq(nil) }
+    describe 'lose page not available' do
+      it { expect(get(urls[:lose])).to be_redirect }
     end
   end
 

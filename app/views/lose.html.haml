@@ -19,9 +19,9 @@
   .text-center
     .text-center
       %h3.text-white
-        = I18n.t('LOSE.lose', name: @web_game.game.user.name)
+        = I18n.t('lose.lose', name: @web_game.game.user.name)
       %h4.text-white
-        = I18n.t('LOSE.code_was')
+        = I18n.t('lose.code_was')
         %strong= @web_game.game.code
     %img.img-fluid{:alt => "You lose the game!", :src => "assets/images/lost.gif"}/
 %hr.mb-4/

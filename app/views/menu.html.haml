@@ -1,21 +1,21 @@
 !!!
 %html.mdl-js{:lang => "en"}
   .row
-    %p.lead.text-white-70= I18n.t('MENU.introduction')
+    %p.lead.text-white-70= I18n.t('menu.introduction')
   %hr.mb-4/
   %form{:action => "/new_game", :method => "post"}
     .form-group
-      %label.lead.label{:for => "player_name"}= I18n.t('MENU.name')
-      %input#user_name.form-control{:autofocus => "", :name => "user_name", :pattern => "^[\\w\\u0400-\\u04ff]{3,20}$", :placeholder => I18n.t('MENU.your_name'), :required => ""}/
+      %label.lead.label{:for => "player_name"}= I18n.t('menu.name')
+      %input#user_name.form-control{:autofocus => "", :name => "user_name", :pattern => "^[\\w\\u0400-\\u04ff]{3,20}$", :placeholder => I18n.t('menu.your_name'), :required => ""}/
     .form-group
-      %label.lead.label{:for => "level"}= I18n.t('MENU.level')
+      %label.lead.label{:for => "level"}= I18n.t('menu.level')
       %select.custom-select{:name => "difficulty", :required => ""}
-        %option{:value => ""}= I18n.t('MENU.choose_level')
-        %option{:value => "easy"}= I18n.t('MENU.easy')
-        %option{:value => "medium"}= I18n.t('MENU.medium')
-        %option{:value => "hell"}= I18n.t('MENU.hell')
+        %option{:value => ""}= I18n.t('menu.choose_level')
+        %option{:value => "easy"}= I18n.t('menu.easy')
+        %option{:value => "medium"}= I18n.t('menu.medium')
+        %option{:value => "hell"}= I18n.t('menu.hell')
     %hr.mb-4/
-    %button.btn.btn-primary.btn-lg{:type => "submit"}= I18n.t('MENU.start')
+    %button.btn.btn-primary.btn-lg{:type => "submit"}= I18n.t('menu.start')
     %span.float-right
-      %a.btn.btn-warning.btn-lg{:href => "/rules", :role => "button"}= I18n.t('MENU.rules')
+      %a.btn.btn-warning.btn-lg{:href => "/rules", :role => "button"}= I18n.t('menu.rules')
       %a.btn.btn-success.btn-lg{:href => "/stats", :role => "button"}= I18n.t('statistics')

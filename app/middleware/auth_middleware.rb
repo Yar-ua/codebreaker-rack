@@ -25,7 +25,7 @@ module Middleware
     end
 
     def auth_location?
-      AUTH_URL.include?(@request.get_header('PATH_INFO'))
+      AUTH_URL.include?(@request.path)
     end
   end
 end

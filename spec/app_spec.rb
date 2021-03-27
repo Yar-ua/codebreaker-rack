@@ -98,8 +98,12 @@ RSpec.describe CodebreakerRack do
     end
 
     describe 'lose game' do
+      let(:lose_game) { last_request.session[:web_game] }
+
       before do
-        5.times { get urls[:submit_answer], guess: '1111' }
+        lose_game.instance_variable_set(:@status, :lose)
+        env 'rack.session', web_game: lose_game
+        post urls[:submit_answer], guess: '1111'
       end
 
       it { expect(last_response.header['Location']).to eq(:lose.to_s) }

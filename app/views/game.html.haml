@@ -27,7 +27,7 @@
           = guess[:guess]
           \==&gt;
           - guess[:buttons].map do |item|
-            %button{ class: "btn #{item[:type]} marks", disabled: "disabled", type: "button"}
+            %button{ class: "btn #{item[:type]} marks", type: "button"}
               = item[:value]
           %br
   %hr.mb-4/
@@ -38,3 +38,6 @@
     - @web_game.hints.each do |hint|
       %span.badge.badge-light
         = hint
+%h3
+  debug line: secret code--------
+  = @web_game.game.code

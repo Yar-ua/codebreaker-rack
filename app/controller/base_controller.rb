@@ -6,7 +6,7 @@ class BaseController
   end
 
   def redirect_to(page)
-    url = page == :root ? '/' : page.to_s
+    url = page == :root ? Constants::URLS[:root] : page.to_s
     @response.redirect(url)
     @response
   end
@@ -17,13 +17,13 @@ class BaseController
   end
 
   def not_found
-    prepeare_response('404_not_found', 404)
+    prepeare_response(:not_found, Constants::CODE_404)
     @response
   end
 
   private
 
-  def prepeare_response(view, code = 200)
+  def prepeare_response(view, code = Constants::CODE_200)
     @response.write(render(view))
     @response.status = code
   end

@@ -1,40 +1,39 @@
 en:
-  title: "Codebreaker Web"
-  name: "Codebreaker 2021"
+  title: Codebreaker Web
+  name: Codebreaker 2021
   menu:
-    introduction: "Try to guess 4-digit number, that consists of numbers in a range from 1 to 6."
-    name: "Player's name:"
-    your_name: "Your name"
+    introduction: Try to guess 4-digit number, that consists of numbers in a range from 1 to 6.
+    name: Players name
+    your_name: Your name
     level: "Game level:"
-    choose_level: "Choose game level..."
-    easy: "easy"
-    medium: "medium"
-    hell: "hell"
-    start: "Start the game!"
-    rules: "Rules"
+    choose_level: Choose game level...
+    easy: easy
+    medium: medium
+    hell: hell
+    start: Start the game!
+    rules: Rules
   game:
     hello: "Hello, %{name}! Try to guess 4-digit number, that consists of numbers in a range from 1 to 6."
-    submit: "Submit"
-    hint: "Show hint!"
+    submit: Submit
+    hint: Show hint!
   lose:
     lose: "Oops, %{name}! You lose the game!"
-    code_was: "The code was "
-  play_again: "Play again!"
-  statistics: "Statistics"
+    code_was: The code was 
+  play_again: Play again!
+  statistics: Statistics
   level: "Level:"
   attempts: "Attempts:"
   attempts_left: "Attempts left:"
   hints: "Hints:"
   hints_left: "Hints left:"
-  date: "Date"
-  home: "Home"
-  not_found: "404 page not found"
+  date: Date
+  home: Home
+  not_found: 404 page not found
   congratulation: "Congratulations, %{name}! You won the game!"
-  top_players: "Top of Players:"
+  top_players: Top of Players
   num: "#"
-  username: "Name"
-  rules: "Game rules.
-    <br/>
+  username: Name
+  rules_html: "Game rules.<br/>
     Codebreaker is a logic game in which a code-breaker tries to break a secret code
     created by a code-maker. The codemaker, which will be played by the application
     we’re going to write, creates a secret code of four numbers between 1 and 6.

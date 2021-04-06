@@ -20,6 +20,7 @@ commands:
             - *bundle_cache_full
             - *bundle_cache
       - run: bundle install --path vendor/bundle
+      - run: cp -p db/top_users.yml.sample top_users.yml
 
       - save_cache:
           key: *bundle_cache_full

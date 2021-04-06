@@ -2,7 +2,7 @@ RSpec.describe CodebreakerRack do
   include Rack::Test::Methods
 
   let(:app) { Rack::Builder.parse_file('config.ru').first }
-  let(:urls) { Router::URLS }
+  let(:urls) { Constants::URLS }
 
   describe 'when user unauthorised' do
     describe 'root page' do
@@ -17,7 +17,7 @@ RSpec.describe CodebreakerRack do
       before { get(urls[:rules]) }
 
       it { expect(last_response.status).to eq(200) }
-      it { expect(last_response.body).to include I18n.t('rules') }
+      it { expect(last_response.body).to include I18n.t('rules_html') }
       it { expect(last_response.body).to include I18n.t('home') }
     end
 
@@ -67,9 +67,9 @@ RSpec.describe CodebreakerRack do
     describe 'submit_answer' do
       before { post urls[:submit_answer], guess: '1234' }
 
-      it '111' do
+      it 'one of symbols' do
         follow_redirect!
-        expect(last_response.body).to include NOPE || Codebreaker::Game::PLUS || Codebreaker::Game::MINUS
+        expect(last_response.body).to include Constants::NOPE || Codebreaker::Game::PLUS || Codebreaker::Game::MINUS
       end
     end
 
@@ -94,6 +94,23 @@ RSpec.describe CodebreakerRack do
       it 'statistics' do
         get urls[:statistics]
         expect(last_response.body).to include user_name
+      end
+    end
+
+    describe 'last wrong guess' do
+      let(:lose_game) { last_request.session[:web_game] }
+
+      before do
+        lose_game.game.instance_variable_set(:@attempts, 1)
+        env 'rack.session', web_game: lose_game
+        post urls[:submit_answer], guess: '1111'
+      end
+
+      it { expect(last_response.header['Location']).to eq(:lose.to_s) }
+
+      it 'redirect lose page' do
+        follow_redirect!
+        expect(last_response.body).to include I18n.t('lose.lose', name: user_name)
       end
     end
 

@@ -1,9 +1,5 @@
 module Middleware
   class AuthMiddleware
-    AUTH_URL = ['/game', '/submit_answer', '/hint', '/win', '/lose'].freeze
-
-    private_constant :AUTH_URL
-
     attr_reader :status
 
     def initialize(app, status = 302)
@@ -13,7 +9,7 @@ module Middleware
 
     def call(env)
       @request = Rack::Request.new(env)
-      return [@status, { 'Location' => Router::URLS[:root] }, ['']] if !authenticated? && auth_location?
+      return [@status, { 'Location' => Constants::URLS[:root] }, ['']] if !authenticated? && auth_location?
 
       @app.call(env)
     end
@@ -25,7 +21,7 @@ module Middleware
     end
 
     def auth_location?
-      AUTH_URL.include?(@request.path)
+      Constants::AUTH_URLS.include?(@request.path)
     end
   end
 end

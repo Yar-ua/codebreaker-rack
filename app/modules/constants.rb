@@ -14,7 +14,7 @@ module Constants
   AUTH_URLS = ['/game', '/submit_answer', '/hint', '/win', '/lose'].freeze
 
   DB_PATH = './db/top_users.yml'.freeze
-  DIFFICULTY_ORDER = %w[hell medium easy].freeze
+  DIFFICULTY_ORDER = %w[easy medium hell].freeze
 
   NOPE = 'x'.freeze
   BTN_SUCCESS = 'btn-success'.freeze

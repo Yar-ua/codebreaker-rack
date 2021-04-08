@@ -10,10 +10,9 @@
     .form-group
       %label.lead.label{:for => "level"}= I18n.t('menu.level')
       %select.custom-select{:name => "difficulty", :required => ""}
-        %option{:value => ""}= I18n.t('menu.choose_level')
-        %option{:value => "easy"}= I18n.t('menu.easy')
-        %option{:value => "medium"}= I18n.t('menu.medium')
-        %option{:value => "hell"}= I18n.t('menu.hell')
+        %option= I18n.t('menu.choose_level')
+        - I18n.t('difficulty').map.with_index do |item, index|
+          %option{:value => Constants::DIFFICULTY_ORDER[index]}= item
     %hr.mb-4/
     %button.btn.btn-primary.btn-lg{:type => "submit"}= I18n.t('menu.start')
     %span.float-right

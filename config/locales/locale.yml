@@ -7,11 +7,12 @@ en:
     your_name: Your name
     level: "Game level:"
     choose_level: Choose game level...
-    easy: easy
-    medium: medium
-    hell: hell
     start: Start the game!
     rules: Rules
+  difficulty:
+    - easy
+    - medium
+    - hell
   game:
     hello: "Hello, %{name}! Try to guess 4-digit number, that consists of numbers in a range from 1 to 6."
     submit: Submit

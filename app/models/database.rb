@@ -20,7 +20,7 @@ class Database
       sorted_stats.sort! do |left_item, right_item|
         [left_item.attempts_used, left_item.hints_used] <=> [right_item.attempts_used, right_item.hints_used]
       end
-      sorted_stats.sort_by! { |item| Constants::DIFFICULTY_ORDER.index item.difficulty }
+      sorted_stats.sort_by! { |item| Constants::DIFFICULTY_ORDER.reverse.index item.difficulty }
       sorted_stats
     end
   end

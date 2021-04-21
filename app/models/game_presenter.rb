@@ -15,7 +15,7 @@ class GamePresenter
   private
 
   def collect_buttons(answer)
-    (answer.split('') + Array.new(Constants::CODE_LENGTH - answer.size)).map do |item|
+    (answer.chars + Array.new(Codebreaker::Game::CODE_LENGTH - answer.size)).map do |item|
       case item
       when Codebreaker::Game::PLUS
         collection(Constants::BTN_SUCCESS, Codebreaker::Game::PLUS)

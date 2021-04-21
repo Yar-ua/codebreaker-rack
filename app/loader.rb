@@ -5,6 +5,7 @@ require 'codebreaker'
 require 'haml'
 require 'yaml'
 require 'i18n'
+require 'date'
 
 require_relative './modules/constants'
 require_relative '../config/i18n'

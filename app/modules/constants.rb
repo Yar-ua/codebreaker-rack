@@ -11,7 +11,7 @@ module Constants
     hint: '/hint'
   }.freeze
 
-  AUTH_URLS = ['/game', '/submit_answer', '/hint', '/win', '/lose'].freeze
+  AUTH_URLS = URLS.slice(:game, :submit_answer, :hint, :win, :lose).values
 
   DB_PATH = './db/top_users.yml'.freeze
   DIFFICULTY_ORDER = %w[easy medium hell].freeze
@@ -22,7 +22,6 @@ module Constants
   BTN_DANGER = 'btn-danger'.freeze
 
   ONE_MONTH = 2_592_000
-  CODE_LENGTH = 4
   CODE_404 = 404
   CODE_200 = 200
 end

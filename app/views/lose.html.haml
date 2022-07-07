@@ -1,0 +1,31 @@
+.row
+  .col.button
+    %button.btn.btn-primary{:disabled => "disabled", :type => "button"}
+      = I18n.t('level')
+      %span.badge.badge-light
+        = @web_game.game.difficulty.type
+    %button.btn.btn-primary{:disabled => "disabled", :type => "button"}
+      = I18n.t('attempts_left')
+      %span.badge.badge-light
+        = @web_game.game.attempts
+        \/#{@web_game.game.difficulty.attempts}
+    %button.btn.btn-primary{:disabled => "disabled", :type => "button"}
+      = I18n.t('hints_left')
+      %span.badge.badge-light
+        = @web_game.game.hints
+        \/#{@web_game.game.difficulty.hints}
+%hr.mb-4/
+.row
+  .text-center
+    .text-center
+      %h3.text-white
+        = I18n.t('lose.lose', name: @web_game.game.user.name)
+      %h4.text-white
+        = I18n.t('lose.code_was')
+        %strong= @web_game.game.code
+    %img.img-fluid{:alt => "You lose the game!", :src => "assets/images/lost.gif"}/
+%hr.mb-4/
+%a.btn.btn-primary.btn-lg{:href => "/", :role => "button"}
+  = I18n.t('play_again')
+%a.btn.btn-success.btn-lg.float-right{:href => "/stats", :role => "button"}
+  = I18n.t('statistics')

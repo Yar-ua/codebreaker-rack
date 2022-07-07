@@ -1,0 +1,28 @@
+%p.lead.text-white-70= I18n.t(:top_players)
+%hr.mb-4/
+.table-responsive-md.scores
+  %table.table.table-striped.table.table-sm
+    %thead
+      %tr
+        %th{:scope => "col"}= I18n.t(:num)
+        %th{:scope => "col"}= I18n.t(:username)
+        %th{:scope => "col"}= I18n.t(:level)
+        %th{:scope => "col"}= I18n.t(:attempts_left)
+        %th{:scope => "col"}= I18n.t(:hints_left)
+        %th{:scope => "col"}= I18n.t(:date)
+    %tbody
+      - @sorted_stats.map.with_index do |stats, index|
+        %tr
+          %th{:scope => "row"}= index + 1
+          %td= stats.name
+          %td= stats.difficulty
+          %td
+            = stats.attempts_total - stats.attempts_used
+            \/#{stats.attempts_total}
+          %td
+            = stats.hints_total - stats.hints_used
+            \/#{stats.hints_total}
+          %td= stats.datetime
+%hr.mb-4/
+%a.btn.btn-primary.btn-lg{:href => "/", :role => "button"}
+  = I18n.t(:home)
